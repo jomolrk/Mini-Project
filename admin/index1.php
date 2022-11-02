@@ -1,3 +1,7 @@
+<?php
+include '../connection.php';
+session_start();
+?>
 <!DOCTYPE html>
  <html lang="en" class="" style="height: auto;">
  <head>
@@ -175,20 +179,15 @@
 
                       <li class="nav-header">Maintenance</li>
                      <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/trains.php" class="nav-link nav-trains">
+                       <a href="http://localhost/Trainticket/admin/trains.php" class="nav-link nav-trains  <?php if (!isset($_GET['page'])) echo 'active'; ?>">
+                        
                          <i class="nav-icon fas fa-train"></i>
                          <p>
                            Train List
                          </p>
                        </a>
                      </li>
-                     <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/view trainlist.php" class="nav-link nav-trains">
-                         <i class="nav-icon fas fa-train"></i>
-                         <p>
-                           view Train List
-                         </p>
-                       </a>
+                     
                      <li class="nav-item dropdown">
                        <a href="http://localhost/Trainticket/admin/schedules.php" class="nav-link nav-schedules">
                          <i class="nav-icon fas fa-calendar-day"></i>
@@ -196,28 +195,37 @@
                            Schedule List
                          </p>
                        </a>
-                       <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/viewschedule.php" class="nav-link nav-schedules">
-                         <i class="nav-icon fas fa-calendar-day"></i>
-                         <p>
-                           view Schedule List
-                         </p>
-                       </a>
+                       
                        <li class="nav-item dropdown">
                        <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
+                        
                          <i class="nav-icon fas fa-calendar-day"></i>
                          <p>
                            Routes
                          </p>
-                       </a>
+                       </a></li>
                        <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/viewroutes.php" class="nav-link nav-routes">
+                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
                          <i class="nav-icon fas fa-calendar-day"></i>
                          <p>
-                           View Routes
+                          Payments
                          </p>
-                       </a>
-                     </li>
+                       </a></li>
+                       <li class="nav-item dropdown">
+                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
+                         <i class="nav-icon fas fa-calendar-day"></i>
+                         <p>
+                          Track
+                         </p>
+                       </a></li>
+                       <li class="nav-item dropdown">
+                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
+                         <i class="nav-icon fas fa-calendar-day"></i>
+                         <p>
+                          Food Package
+                         </p>
+                       </a></li>
+                      
                      <li class="nav-item dropdown">
                        <a href="http://localhost/trainticket/admin/userlist.php" class="nav-link nav-user_list">
                          <i class="nav-icon fas fa-users-cog"></i>
@@ -255,7 +263,7 @@
          <!-- Main content -->
          <section class="content ">
            <div class="container-fluid">
-             <h1>Welcome to Online Railway Reservation System - PHP - Admin Panel</h1>
+             <h1>Welcome to Online Railway Reservation System - - Admin Panel</h1>
  <hr class="border-info">
  <div class="row">
      <div class="col-12 col-sm-12 col-md-6 col-lg-3">
@@ -263,16 +271,16 @@
              <span class="info-box-icon bg-gradient-warning elevation-1"><i class="fas fa-train"></i></span>
 
              <div class="info-box-content">
-             <span class="info-box-text">Total Trains</span>
+             <span class="info-box-text"> Trains</span>
              
              <span class="info-box-number text-right">
-             <?php 
-             				
-                     $qry = "SELECT count(id) FROM train ";
-                    
-                       ?>  
-
-                        </span>
+             <?php
+             echo $reg =  $conn->query("SELECT * FROM  trains")->num_rows;
+             ?></span>
+			
+								
+		
+                       
              </div>
              <!-- /.info-box-content -->
          </div>
@@ -283,13 +291,12 @@
              <span class="info-box-icon bg-gradient-info elevation-1"><i class="fas fa-calendar"></i></span>
 
              <div class="info-box-content">
-             <span class="info-box-text">Daily Schedules</span>
+             <span class="info-box-text"> Schedules</span>
              <span class="info-box-number text-right">
-             <?php 
-             				
-                     $qry = "SELECT count(id) FROM schedule ";
-                    
-                       ?>              </span>
+             <?php
+             echo $reg =  $conn->query("SELECT * FROM  schedule")->num_rows;
+             ?></span>
+                          </span>
              </div>
              <!-- /.info-box-content -->
          </div>
@@ -300,8 +307,13 @@
              <span class="info-box-icon bg-gradient-primary elevation-1"><i class="fas fa-calendar-day"></i></span>
 
              <div class="info-box-content">
-             <span class="info-box-text">One-Time Schedules</span>
+             <span class="info-box-text">Routes</span>
              <span class="info-box-number text-right">
+             <span class="info-box-number text-right">
+             <?php
+             echo $reg =  $conn->query("SELECT * FROM  route")->num_rows;
+             ?>
+            
                              </span>
              </div>
              <!-- /.info-box-content -->
@@ -313,13 +325,13 @@
              <span class="info-box-icon bg-gradient-teal elevation-1"><i class="fas fa-ticket-alt"></i></span>
 
              <div class="info-box-content">
-             <span class="info-box-text">Reserved Passengers</span>
+             <span class="info-box-text"> Passengers</span>
+             
              <span class="info-box-number text-right">
-             <?php 
-             				
-                     $qry = "SELECT count(id) FROM register ";
-                    
-                       ?>           </span>
+             <?php
+             echo $reg =  $conn->query("SELECT * FROM  tbl_register where reg_name!='Admin' ")->num_rows;
+             ?>
+                     </span>
              </div>
              <!-- /.info-box-content -->
          </div>

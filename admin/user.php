@@ -107,7 +107,12 @@ else{
 			
 			<tr>
 				<td>
-				<span style="width:35%;"><a id="cpass">Change Password</a></span>
+				<span style="width:35%;"><a href="../changepassword.php">Change Password</a></span>
+				<span class="label label-success" id="chang" style="float:right;display:none;">Password Successfully Changed &nbsp;&nbsp;&nbsp;<span>  <!-- display:none; color:#0000ff;-->
+				</td>
+				
+				<td>
+				<span style="width:55%;"><a href="editprofile.php">edit profile</a></span>
 				<span class="label label-success" id="chang" style="float:right;display:none;">Password Successfully Changed &nbsp;&nbsp;&nbsp;<span>  <!-- display:none; color:#0000ff;-->
 				</td>
 			</tr>
@@ -116,15 +121,9 @@ else{
 
 		<div class="span12 pass2 " style="display:none;">
 		<div class="span4 well">	
-		<!--<h2>Change Password</h2>	-->
 		<br/>
 		<br/>
-				<form action="changepass.php" method="get" onsubmit="return fgth()">
-				<label>New Password</label><input id="p1" name ="new1" type="password" class="input-large" onkeyup="return check123()"><span id="ps" ></span></td><br><br>  <!-- onkeyup=="check()" -->
-				<label>Repeat Password</label><input id="p2" name="pass" class="input-large" type="password" onkeyup="checkk()">
-				<br /><span id="match" style="color:#ff0000;visibility:hidden;">&nbsp;&nbsp;Password Don't Match</span><br><br> 
-				<input id="sub" type="submit"  class="btn btn-info" value="Change Password">
-				</form>
+				
 		</div>
 		</div>
 		
@@ -140,7 +139,8 @@ else{
 			
 			<tr>
 				<td>
-					<form action="editprofile.php" method="post" enctype="multipart/form-data">
+				<span style="width:35%;"><a href="../edit profile.php">edit profile</span>
+				<form action="editprofile.php" method="post" enctype="multipart/form-data">
 					<div class="span6" style="float:left;width:80%;">
 					<table class="table">
 					<tr><td >Fullname : </td> <td style="text-transform:capitalize;"><?php echo $row['name']; ?></td></tr>
