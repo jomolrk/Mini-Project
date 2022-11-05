@@ -28,8 +28,7 @@
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Event Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -93,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        }
 		?>
 		<tr>				 	
-	                    <td class="text-right"><?php echo $row['reg_name'] ?></td>
+	                    <td cellspacing=20 class="text-right"><?php echo $row['reg_name'] ?></td>
                                         <td class="text-right"><?php echo $row['reg_dob']?></td>
                                         <td class="text-right"><?php echo $row['reg_gender']?></td>
 		<td class="text-right"><?php echo $row['reg_adhar']?></td>

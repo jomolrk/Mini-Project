@@ -22,6 +22,7 @@ if($reg_res && mysqli_num_rows($reg_res)==1){
 else{
     $row=null;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +108,7 @@ else{
 			
 			<tr>
 				<td>
-				<span style="width:35%;"><a href="../changepassword.php">Change Password</a></span>
+				<span style="width:35%;"><a href="changepassword.php">Change Password</a></span>
 				<span class="label label-success" id="chang" style="float:right;display:none;">Password Successfully Changed &nbsp;&nbsp;&nbsp;<span>  <!-- display:none; color:#0000ff;-->
 				</td>
 				

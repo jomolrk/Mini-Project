@@ -1,32 +1,39 @@
 <?php
-session_start();
+    session_start();
+    include '../connection.php';
 
+    $id= $_SESSION['id'];
+    $user_res= mysqli_query($conn,"SELECT * from tbl_register WHERE reg_id=$id");
+    if($user_res && mysqli_num_rows($user_res)==1){
+        $row= mysqli_fetch_array($user_res);
+    }
 
-require('../connection.php');
+if (isset($_POST["edit"])) {
+    $fname=$_POST['reg_name'];
+    $gender=$_POST['reg_gender'];
+    $dob=$_POST['reg_dob'];
+    $mobile=$_POST['reg_phone'];
+    $ino=$_POST['reg_adhar'];
 
-
-
-if(!isset($_SESSION["submit"]))
-
-
-$name=$_SESSION['name'];
-$gender=$_POST['gender'];
-$dob=$_POST['dob'];
-$mobile=$_POST['phno'];
-$idcard=$_POST['ino'];
-
-
-
-
-$sql="UPDATE tbl_login AND tbl_register SET reg_name='$name,reg_gender='$gender',reg_dob='$dob',reg_phone='$mobile',reg_adhar='$idcard' WHERE reg_name='Admin'";
-$result=mysqli_query($conn,$sql);
-
-
-$_SESSION['error']==4;
-
-header('location:user.php');
-
+    $sql="UPDATE tbl_register SET reg_name='$fname',reg_gender='$gender',reg_dob='$dob',reg_phone='$mobile',reg_adhar='$ino' WHERE reg_name='Admin'";
+    $result=mysqli_query($conn, $sql);
+    if($result){
+        echo "<script>
+            alert('Profile Updated Successfully.');
+            window.location.href='index1.php';
+        </script>";
+    }
+    else{
+        echo "<script>
+            alert('Unable to update profile !! Please try again.');
+        </script>";
+    }
+}
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -58,7 +65,7 @@ header('location:user.php');
 	
 </head>
 
-<body style="background-image: url(images/regim.jpg);">
+    <body style="background-image: url(images/regim.jpg);">
 	
 	<div class="wrap">
 		<!-- Header -->
@@ -84,9 +91,9 @@ header('location:user.php');
 			</div>
 		</div>
 		
-		<div class="span12 pass3 " style="display:none;">
+		<div class="span12 pass3">
 		<div class="span8 well">
-			<table style="width:100%;">
+			<table>
 			<tr>
 				<td><span style="font-weight:bold;font-size:25px;">Profile</span>
 
@@ -94,20 +101,17 @@ header('location:user.php');
 			
 			<tr>
 				<td>
-				<span style="width:35%;"><a href="../edit profile.php">edit profile</span>
-				<form action="editprofile.php" method="post" enctype="multipart/form-data">
-					<div class="span6" style="float:left;width:80%;">
+				<form action="editprofile.php" method="post">
+					<div class="span6">
 					<table class="table">
-					<tr><td >Fullname : </td> <td style="text-transform:capitalize;"><?php echo $row['name']; ?></td></tr>
-			
-					<tr><td>E-Mail : </td> <td><?php echo $row['email'];?></td></tr>
-					<tr><td>Dob : </td> <td><?php echo $row['dob']; ?></td></tr>
-					<tr><td> Gender :</td> <td><?php echo $row['gender'];?></td></tr>
-					<tr><td>ID Cardno: </td> <td><?php echo $row['ino']; ?></td></tr>
-					<tr><td>Mobile No : </td> <td><?php echo $row['phno'];?></td></tr>
+					<tr><td >Fullname : </td> <td style="text-transform:capitalize;"><input type="text" name="reg_name" value="<?php echo $row['reg_name']; ?>"></td></tr>
+					<tr><td>Dob : </td> <td><input type="text" name="reg_dob" value="<?php echo $row['reg_dob']; ?>"></td></tr>
+					<tr><td> Gender :</td> <td><input type="text" name="reg_gender" value="<?php echo $row['reg_gender'];?>"></td></tr>
+					<tr><td>ID Cardno: </td> <td><input type="text" name="reg_adhar" value="<?php echo $row['reg_adhar']; ?>"></td></tr>
+					<tr><td>Mobile No : </td> <td><input type="text" name="reg_phone" value="<?php echo $row['reg_phone'];?>"></td></tr>
 					
 
-					<tr> <td><input type="submit"  class="btn btn-info" value="Edit profile" ></td></tr>
+					<tr> <td><input type="submit" name="edit" class="btn btn-info" value="Edit profile" ></td></tr>
 				
 					</table>
 					</div>
@@ -130,7 +134,9 @@ header('location:user.php');
 		</footer>
 	
 	</div>
-	</html>
+
+    </body>
+</html>
 
 
 

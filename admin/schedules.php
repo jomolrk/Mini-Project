@@ -6,31 +6,21 @@ session_start();
 <html lang="en">
 <head>
 <title>Schedule list added</title>
-<!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Event Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+
+    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/trains_css.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!-- //custom-theme -->
-<link href="../admin/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-<!-- js -->
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-<!-- //js -->
-<!-- font-awesome-icons -->
-<!-- //font-awesome-icons -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!--bootstrap link-->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
         
 <a href="index1.php">
           
@@ -89,14 +79,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     while ($fetch = $row->fetch_assoc()) {
                                         $id = $fetch['id']; ?><tr>
                                         <td><?php echo ++$sn; ?></td>
-                                        <td><?php echo getTrainName($fetch['train_id']); ?></td>
-                                        <td><?php echo getRoutePath($fetch['route_id']);
+                                        <td><?php echo $train->id->tname($fetch['train_id']); ?></td>
+                                        <td><?php echo $route->id->station1($fetch['route_id']);
                                                 $fullname = " Schedule" ?></td>
                                         <td>$ <?php echo ($fetch['first_fee']); ?></td>
                                         <td>$ <?php echo ($fetch['second_fee']); ?></td>
-                                        <td><?php $array = getTotalBookByType($id);
-                                                echo (($array['first'] - $array['first_booked'])), " Seat(s) Available for First Class" . "<hr/>" . ($array['second'] - $array['second_booked']) . " Seat(s) Available for Second Class";
-                                                ?></td>
+                                        <td>$ <?php echo ($fetch['sleeper_fee']); ?></td>
+                                        <td>$ <?php echo ($fetch['general_fee']); ?></td>
+                                        <td>$ <?php echo ($fetch['ac_fee']); ?></td>
+                                        <td>$ <?php echo ($fetch['lad_fee']); ?></td>
                                         <td><?php echo $fetch['date'], " / ", formatTime($fetch['time']); ?></td>
 
                                         <td>

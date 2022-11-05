@@ -7,33 +7,22 @@ session_start();
 <html lang="en">
 <head>
 <title>Route list added</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Event Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Train list added</title>
 
+    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/trains_css.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!-- //custom-theme -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/trains_css.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-<!-- js -->
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-<!-- //js -->
-<!-- font-awesome-icons -->
-<!-- //font-awesome-icons -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!--bootstrap link-->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-        
 <a href="index1.php">
           
 <span class="glyphicon glyphicon-backward"></span> Back to Admin Home</a>
@@ -49,11 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="card-header">
                             <h3 class="card-title">
                                 All Routes</h3>
-                            <div class='float-right'>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                    data-target="#add">
-                                    Add New Route &#128645;
-                                </button></div>
+                            
                         </div>
 
                         <div class="card-body">
@@ -92,15 +77,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </td>
                                         <td><input class="trains_input" type="text" name="from" value="<?php echo $fetch['from']; ?>"></td>
                                         <td><input class="trains_input" type="text" name="station1" value="<?php echo $fetch['station1']; ?>"></td>
-                                        <td><input class="trains_input" type="time" name="station1Arrival" value="<?php echo $fetch['stn1arr']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="station2 value="<?php echo $fetch['station2']; ?>"></td>
-                                        <td><input class="trains_input" type="time" name="station2Arrival" value="<?php echo $fetch['stn2arr']; ?>"></td>
+                                        <td><input class="trains_input" type="text" name="station1Arrival" value="<?php echo $fetch['stn1arr']; ?>"></td>
+                                        <td><input class="trains_input" type="text" name="station2" value="<?php echo $fetch['station2']; ?>"></td>
+                                        <td><input class="trains_input" type="text" name="station2Arrival" value="<?php echo $fetch['stn2arr']; ?>"></td>
                                         <td><input class="trains_input" type="text" name="station3" value="<?php echo $fetch['station3']; ?>"></td>
-                                        <td><input class="trains_input" type="time" name="station3Arrival" value="<?php echo $fetch['stn3arr']; ?>"></td>
+                                        <td><input class="trains_input" type="text" name="station3Arrival" value="<?php echo $fetch['stn3arr']; ?>"></td>
                                         <td><input class="trains_input" type="text" name="to" value="<?php echo $fetch['to']; ?>"></td>
                                         <td>
                                             <input type="submit" name="edit" class="bt btn-primary" value="Edit">
-                                            <input type="submit" name="del_train" class="bt btn-danger" value="Delete">
+                                            <input type="submit" name="del_route" class="bt btn-danger" value="Delete">
                                         </td>
                                     </tr>
                                      
@@ -109,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                   <h4 class="modal-title">Editing <?php echo $fullname;?>&#128642;</h4>
+                                                  
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -215,31 +200,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </tr>
                         <tr>
                             <th>Station1 Arrival</th>
-                            <td><input type="time" min='0' class="form-control" name="station1Arrival" value= "<?php echo $fetch['stn1arr'] ?>"  required id=""></td>
+                            <td><input type="time" min='0'  class="form-control" name="station1Arrival" value= "<?php echo $fetch['stn1arr'] ?>"  required id=""></td>
                         </tr>
                         <tr>
                             <th>Station2</th>
-                            <td><input type="text" min='0' class="form-control" name="station2" required id="">
+                            <td><input type="text" min='0'  class="form-control" name="station2" required id="">
                             </td>
                         </tr>
                         <tr>
                             <th>Station2 Arrival</th>
-                            <td><input type="time" min='0' class="form-control" name="station2Arrival"value="<?php echo $fetch['stn2arr'] ?>" required id="">
+                            <td><input type="time" min='0'   class="form-control" name="station2Arrival"value="<?php echo $fetch['stn2arr'] ?>" required id="">
                             </td>
                         </tr>
                         <tr>
                             <th>Station3</th></th>
-                            <td><input type="text" min='0' class="form-control" name="station3" required id="">
+                            <td><input type="text" min='0'   class="form-control" name="station3" required id="">
                             </td>
                         </tr>
                         <tr>
-                            <th>Station3 Arrival</th></th>
-                            <td><input type="time" min='0' class="form-control" name="station3Arrival"value="<?php echo $fetch['3'] ?>"  required id="">
+                            <th>Station3 Arrival</th>
+                            <td><input type="time" min='0'    class="form-control" name="station3Arrival"value="<?php echo $fetch['3'] ?>"  required id="">
                             </td>
                         </tr>
                         <tr>
                             <th>To</th></th>
-                            <td><input type="text" min='0' class="form-control" name="to" required id="">
+                            <td><input type="text" min='0'    class="form-control" name="to" required id="">
                             </td>
                         </tr>
                         <tr>
@@ -265,31 +250,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <?php
 
-    if (isset($_POST['submit'])) {
-        $from = $_POST['from'];
-        $station1 = $_POST['station1'];
-        $stn1arr= $_POST['stn1arr'];
-        $station2 = $_POST['station2'];
-        $stn2arr = $_POST['stn2arr'];
-        $station3= $_POST['station3'];
-        $stn3arr= $_POST['stn3arr'];
-        $to = $_POST['to'];
-        if (!isset($from,$station1, $stn1arr, $station2,$stn2arr,$station3,$stn3arr,$to)) {
-            echo("Fill Form Properly!");
-        } else {
-            mysqli_query($conn,"INSERT INTO `route`( `from`, `station1`, `stn1arr`, `station2`, `stn2arr`, `station3`, `stn3arr`, `to`) VALUES (' $from','$station1','$stn1arr','$station2','$stn2arr','$station3','$stn3arr','$to')");
-            echo "<script language='javascript'>";
-	echo 'window.location.href = "Routes.php"';
-	echo "alert('Route details added succefully')";
-	
-	echo "</script>";
-	
+   
 
-             }
-             }
 
    
     if (isset($_POST['edit'])) {
+        $rid= $_POST['r_id'];
         $fr = $_POST['from'];
         $s1 = $_POST['station1'];
         $s1arr= $_POST['stn1arr'];
@@ -298,11 +264,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $s3= $_POST['station3'];
         $stn3arr= $_POST['stn3arr'];
         $to = $_POST['to'];
-if (!isset($from,$station1, $stn1arr, $station2,$stn2arr,$station3,$stn3arr,$to)) {
-    echo "<script>alert('Route fill properly !!');</script>";
-}
+        if (!isset($from,$station1, $stn1arr, $station2,$stn2arr,$station3,$stn3arr,$to)) {
+            echo "<script>alert('Route fill properly !!');</script>";
+        }
         else {
-                $modify_route_sql= "UPDATE `route` SET `from`='$fr',`station1`='$s1',`stn1arr`='$s1arr',`station2`='s2',`stn2arr`='$s2arr',`station3`='$s3',`stn3arr`='$s3arr',`to`='$to' "; 
+                $modify_route_sql= "UPDATE `route` SET `from`='$fr',`station1`='$s1',`stn1arr`='$s1arr',`station2`='s2',`stn2arr`='$s2arr',`station3`='$s3',`stn3arr`='$s3arr',`to`='$to' where id=$rid "; 
                 $edit_res= mysqli_query($conn,$modify_trains_sql);
                 if($edit_res){
                     echo "<script>alert('Route Modified!')</script>";
@@ -317,7 +283,7 @@ if (!isset($from,$station1, $stn1arr, $station2,$stn2arr,$station3,$stn3arr,$to)
 
     if (isset($_POST['del_route'])) {
         $rid= $_POST['r_id'];
-        $del_res= mysqli_query($conn, "DELETE FROM route WHERE id = '$rid'");
+        $del_res= mysqli_query($conn, "DELETE FROM `route`  WHERE id = '$rid'");
         if(mysqli_affected_rows($conn) >= 1){
             echo "<script>alert('Route Deleted !!');</script>";
         }

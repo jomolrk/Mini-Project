@@ -1,264 +1,240 @@
 <?php
-include '../connection.php';
-session_start();
-
+    include '../connection.php';
+    @session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Train list added</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Event Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Train list added</title>
 
+    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/trains_css.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!-- //custom-theme -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/trains_css.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
-<!-- js -->
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-<!-- //js -->
-<!-- font-awesome-icons -->
-<!-- //font-awesome-icons -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!--bootstrap link-->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-        
-<a href="index1.php">
-          
-<span class="glyphicon glyphicon-backward"></span> Back to Admin Home</a>
 </head>
 <body>
-<div class="content">
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                All Trains</h3>
-                            <div class='float-right'>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                    data-target="#add">
-                                    Add New Train &#128645;
-                                </button></div>
-                        </div>
 
-                        <div class="card-body">
-                        <form action="#" method="POST">
-                            <table id="example1" style="align-items: stretch;"
-                                class="table table-hover w-100 table-bordered table-striped<?php //
-                                                                                                                                            ?>">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-		                                <th>Train code</th>
-                                        <th>Train Name</th>
-                                        <th>First Class </th>
-                                        <th>Second Class </th>
-	                                	<th>Sleeper Class</th>
-                                        <th>General Quota </th>
-                                       <th>AC coach </th>
-		                                <th>Ladies Quota </th>
-                                        <th style="width: 30%;">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $row =mysqli_query($conn,"SELECT * FROM trains");
-                                    if ($row->num_rows < 1) echo "No Records Yet";
-                                    $sn = 0;
-                                    while ($fetch = $row->fetch_assoc()) {
-                                        $id = $fetch['id'];
-                                    ?>
+    <a href="index1.php">  
+    <span class="glyphicon glyphicon-backward"></span> Back to Admin Home</a>
+    
+    <div class="content">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">All Trains</h3>
+                                <div class='float-right'>
+                                    <button type="button" class="bt btn-primary" data-toggle="modal"
+                                    data-target="#add">Add New Train &#128645;</button>
+                                </div>
+                            </div>
 
-                                    <tr>
-                                        <td>
-                                            <input class="trains_input" type="text" value="<?php echo ++$sn; ?>">
-                                            <input class="trains_input" type="text" readonly name="t_id" value="<?php echo $fetch['id'] ?>">
-                                        </td>
-                                        <td><input class="trains_input" type="text" name="t_code" value="<?php echo $fetch['t_code']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="tname" value="<?php echo $fetch['tname']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="firstclass" value="<?php echo $fetch['first class']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="secondclass" value="<?php echo $fetch['secondclass']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="sleeperclass" value="<?php echo $fetch['sleeperclass']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="generalqouta" value="<?php echo $fetch['generalqouta']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="aircond" value="<?php echo $fetch['AC']; ?>"></td>
-                                        <td><input class="trains_input" type="text" name="ladiesquota" value="<?php echo $fetch['ladiesquota']; ?>"></td>
-                                        <td>
-                                            <input type="submit" name="edit" class="bt btn-primary" value="Edit">
-                                            <input type="submit" name="del_train" class="bt btn-danger" value="Delete">
-                                        </td>
-                                    </tr>
-                                     
+                            <div class="card-body">
+                                <form action="#" method="POST">
+                                    <table id="example1" style="align-items: stretch;" class="table table-hover w-100 table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Train code</th>
+                                                <th>Train Name</th>
+                                                <th>First Class </th>
+                                                <th>Second Class </th>
+                                                <th>Sleeper Class</th>
+                                                <th>General Quota </th>
+                                            <th>AC coach </th>
+                                                <th>Ladies Quota </th>
+                                                <th style="width: 30%;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $row =mysqli_query($conn,"SELECT * FROM trains");
+                                                if ($row->num_rows < 1) echo "No Records Yet";
+                                                $sn = 0;
+                                                while ($fetch = $row->fetch_assoc()) {
+                                                    $id = $fetch['id'];
+                                                ?>
 
-                                    <div class="modal fade" id="edit<?php echo $id ?>">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                   <h4 class="modal-title">Editing <?php echo $fullname;?></h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="" method="post">
-                                                        <input type="hidden" class="form-control" name="id"
-                                                            value="<?php echo $id ?>" required id="">
-                                                            <p>Train Code: <input type="text" class="form-control"
-                                                                name="t_code" value="<?php echo $fetch['t_code'] ?>"
-                                                                required minlength="3" id=""></p>
-                                                        <p>Train Name : <input type="text" class="form-control"
-                                                                name="tname" value="<?php echo $fetch['tname'] ?>"
-                                                                required minlength="3" id=""></p>
-                                                        <p>First Class Capacity : <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['first class'] ?>"
-                                                                name="firstclass" required id="">
-                                                        </p>
-                                                        <p> Second Class Capacity : <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['secondclass'] ?>"
-                                                                name="secondclass" required id="">
-                                                        </p>
-                                                        <p> Sleeper Class Capacity : <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['sleeperclass'] ?>"
-                                                                name="sleeperclass" required id="">
-                                                        </p>
-                                                        <p>General Quota : <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['generalqouta'] ?>"
-                                                                name="generalqouta" required id="">
-                                                        </p>
-                                                        <p> Ac Coach: <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['AC'] ?>"
-                                                                name="tatkalqouta" required id="">
-                                                        </p>
-                                                        <p> Ladies Quota : <input type="number" min='0'
-                                                                class="form-control"
-                                                                value="<?php echo $fetch['ladiesqouta'] ?>"
-                                                                name="ladiesquota" required id="">
-                                                        </p>
-                                                        <p>
+                                                <tr>
+                                                    <td>
+                                                        <input class="trains_input" type="text" value="<?php echo ++$sn; ?>">
+                                                        <input class="trains_input" type="text" readonly name="t_id" value="<?php echo $fetch['id'] ?>">
+                                                    </td>
+                                                    <td><input class="trains_input" type="text" name="t_code" value="<?php echo $fetch['t_code']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="tname" value="<?php echo $fetch['tname']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="firstclass" value="<?php echo $fetch['first class']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="secondclass" value="<?php echo $fetch['secondclass']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="sleeperclass" value="<?php echo $fetch['sleeperclass']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="generalqouta" value="<?php echo $fetch['generalqouta']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="aircond" value="<?php echo $fetch['AC']; ?>"></td>
+                                                    <td><input class="trains_input" type="text" name="ladiesquota" value="<?php echo $fetch['ladiesquota']; ?>"></td>
+                                                    <td>
+                                                        <input type="submit" name="edit" class="bt btn-primary" value="Edit">
+                                                        <input type="submit" name="del_train" class="bt btn-danger" value="Delete">
+                                                    </td>
+                                                </tr>
+                                            
 
-                                                            <input class="btn btn-info" type="submit" value="Edit Train"
-                                                                name='edit'>
-                                                        </p>
-                                                    </form>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">Close</button>
+                                            <div class="modal fade" id="edit<?php echo $id ?>">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="" method="post">
+                                                                <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>" required id="">
+                                                                    <p>Train Code: <input type="text" class="form-control" name="t_code" value="<?php echo $fetch['t_code'] ?>" required minlength="3" id=""></p>
+                                                                    <p>Train Name : <input type="text" class="form-control" name="tname" value="<?php echo $fetch['tname'] ?>" required minlength="3" id=""></p>
+                                                                    <p>First Class Capacity : <input type="number" min='0' class="form-control" value="<?php echo $fetch['first class'] ?>" name="firstclass" required id=""></p>
+                                                                    <p> Second Class Capacity : <input type="number" min='0' class="form-control" value="<?php echo $fetch['secondclass'] ?>" name="secondclass" required id=""></p>
+                                                                    <p> Sleeper Class Capacity : <input type="number" min='0' class="form-control" value="<?php echo $fetch['sleeperclass'] ?>" name="sleeperclass" required id=""></p>
+                                                                <p>General Quota : <input type="number" min='0' class="form-control" value="<?php echo $fetch['generalqouta'] ?>" name="generalqouta" required id=""></p>
+                                                                <p> Ac Coach: <input type="number" min='0' class="form-control" value="<?php echo $fetch['AC'] ?>" name="AC" required id=""></p>
+                                                                <p> Ladies Quota : <input type="number" min='0' class="form-control" value="<?php echo $fetch['ladiesquota'] ?>" name="ladiesquota" required id=""></p>
+                                                                <p><input class="btn btn-info" type="submit" value="Edit Train" name='edit'></p>
+                                                            </form>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
                                                     </div>
+                                                    <!-- /.modal-dialog -->
                                                 </div>
-                                                <!-- /.modal-content -->
                                             </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                        <!-- /.modal -->
-                                        <?php
-                                    }
-                                        ?>
+                                                <!-- /.modal -->
+                                            <?php } ?>
 
-                                </tbody>
-                               
-                            </table>
-                            </form>
+                                        </tbody>
+                                    
+                                    </table>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
-<div class="modal fade" id="add">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content" align="center">
-            <div class="modal-header">
-                <h4 class="modal-title">Add New Train &#128646;
-                </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="post">
-
-                    <table class="table table-bordered">
-                    <tr>
-                            <th>Train Code</th>
-                            <td><input type="text" class="form-control" name="t_code" required minlength="3" id=""></td>
-                        </tr>
-                        <tr>
-                            <th>Train Name</th>
-                            <td><input type="text" class="form-control" name="tname" required minlength="3" id=""></td>
-                        </tr>
-                        <tr>
-                            <th>First Class Capacity</th>
-                            <td><input type="number" min='0' class="form-control" name="firstclass" required id=""></td>
-                        </tr>
-                        <tr>
-                            <th>Second Class Capacity</th>
-                            <td><input type="number" min='0' class="form-control" name="secondclass" required id="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Sleeper Class Capacity</th>
-                            <td><input type="number" min='0' class="form-control" name="sleeperclass" required id="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>General Quota</th></th>
-                            <td><input type="number" min='0' class="form-control" name="generalquota" required id="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>AC Coach</th></th>
-                            <td><input type="number" min='0' class="form-control" name="AC" required id="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Ladies Quota</th></th>
-                            <td><input type="number" min='0' class="form-control" name="ladiesquota" required id="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-
-                                <input class="btn btn-info" type="submit" value="Add Train" name='submit'>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-
-
-
-            </div>
-
-        </div>
-        <!-- /.modal-content -->
+        </section>
     </div>
-    <!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="add">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" align="center">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Train &#128646;
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+
+                        <table class="table table-bordered">
+                        <tr>
+                                <th>Train Code</th>
+                                <td><input type="text" class="form-control" name="t_code" required minlength="3" id=""></td>
+                            </tr>
+                            <tr>
+                                <th>Train Name</th>
+                                <td><input type="text" class="form-control" name="name" required minlength="3" id=""></td>
+                            </tr>
+                            <tr>
+                                <th>First Class Capacity</th>
+                                <td><input type="number" min='0' class="form-control" name="firstclass" required id=""></td>
+                            </tr>
+                            <tr>
+                                <th>Second Class Capacity</th>
+                                <td><input type="number" min='0' class="form-control" name="secondclass" required id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Sleeper Class Capacity</th>
+                                <td><input type="number" min='0' class="form-control" name="second_seat" required id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>General Quota</th>
+                                <td><input type="number" min='0' class="form-control" name="second_seat" required id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>AC Coach</th>
+                                <td><input type="number" min='0' class="form-control" name="AC" required id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ladies Quota</th>
+                                <td><input type="number" min='0' class="form-control" name="ladiesquota" required id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+
+                                    <input class="btn btn-info" type="submit" value="Add Train" name='submit'>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+
+
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/datatables/jquery.dataTables.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <script src="dist/js/pages/dashboard3.js"></script>
+
+    <script>
+        $(function() {
+            $("#example1").DataTable();
+        });
+    </script>
+
+    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <script>
+    $(function() {
+        /* jQueryKnob */
+
+        $('.knob').knob({
+            draw: function() {}
+        })
+
+    })
+    </script>
+
+
 </body>
 </html>
 
@@ -276,8 +252,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         if (!isset($code,$tname, $first_class, $second_class,$sleeper_class,$gen,$tatkal,$lad)) {
             echo "<script>alert('Train list added properly!')</script>";
         } else {
-        
-
             $check = mysqli_query($conn,"SELECT * FROM trains WHERE tname = '$tname' ")->num_rows;
             if ($check) {
                 echo("Train exists");
@@ -340,7 +314,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 ?>
 
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+ <!--<button type="button" class="btn btn-primary" data-toggle="modal"
     data-target="#edit<?php echo $id ?>">
     Edit
 </button> -
@@ -351,4 +325,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     onclick="return confirm('Are you sure about this?')"
     class="btn btn-danger">
     Delete
-</button> -->
+</button>-->

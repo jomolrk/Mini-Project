@@ -1,6 +1,9 @@
 <?php
 include '../connection.php';
 session_start();
+if(!isset($_SESSION['islogged']) || !$_SESSION['islogged']){
+    header('Location: ../index.php');  
+}
 ?>
 <!DOCTYPE html>
  <html lang="en" class="" style="height: auto;">
@@ -178,8 +181,18 @@ session_start();
                   
 
                       <li class="nav-header">Maintenance</li>
-                     <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/trains.php" class="nav-link nav-trains  <?php if (!isset($_GET['page'])) echo 'active'; ?>">
+                      <li class="nav-item dropdown">
+                       <a href="http://localhost/Trainticket/admin/add train.php" class="nav-link nav-routes">
+                        
+                         <i class="nav-icon fas fa-calendar-day"></i>
+                         <p>
+                           Add Train
+                         </p>
+                       </a></li>
+                    
+                      <li class="nav-item dropdown">
+                       
+                     <a href="http://localhost/Trainticket/admin/trains.php" class="nav-link nav-trains  <?php if (!isset($_GET['page'])) echo 'active'; ?>">
                         
                          <i class="nav-icon fas fa-train"></i>
                          <p>
@@ -195,6 +208,13 @@ session_start();
                            Schedule List
                          </p>
                        </a>
+                       <li class="nav-item dropdown">
+                       <a href="http://localhost/Trainticket/admin/addroute.php" class="nav-link nav-routes">
+                        
+                         <i class="nav-icon fas fa-calendar-day"></i>
+                         <p>
+                           Add Routes
+                         </p>
                        
                        <li class="nav-item dropdown">
                        <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
@@ -205,30 +225,22 @@ session_start();
                          </p>
                        </a></li>
                        <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
+                       <a href="http://localhost/Trainticket/admin/addseat.php" class="nav-link nav-routes">
                          <i class="nav-icon fas fa-calendar-day"></i>
                          <p>
-                          Payments
+                          Add seat
+                         </p>
+                       <li class="nav-item dropdown">
+                       <a href="http://localhost/Trainticket/admin/seat.php" class="nav-link nav-routes">
+                         <i class="nav-icon fas fa-calendar-day"></i>
+                         <p>
+                          seat
                          </p>
                        </a></li>
                        <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
+                       <a href="http://localhost/Trainticket/admin/userlist.php" class="nav-link nav-routes">
                          <i class="nav-icon fas fa-calendar-day"></i>
-                         <p>
-                          Track
-                         </p>
-                       </a></li>
-                       <li class="nav-item dropdown">
-                       <a href="http://localhost/Trainticket/admin/Routes.php" class="nav-link nav-routes">
-                         <i class="nav-icon fas fa-calendar-day"></i>
-                         <p>
-                          Food Package
-                         </p>
-                       </a></li>
-                      
-                     <li class="nav-item dropdown">
-                       <a href="http://localhost/trainticket/admin/userlist.php" class="nav-link nav-user_list">
-                         <i class="nav-icon fas fa-users-cog"></i>
+                         
                          <p>
                            User List
                          </p>
