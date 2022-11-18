@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  include('connection.php');
+  if(!isset($_SESSION['islogged']) || !$_SESSION['islogged']){
+      header('Location: index.php');  
+  }
+?>
+
 <!DOCTYPE html>
  <html lang="en" class="" style="height: auto;">
  <head>
@@ -118,7 +126,7 @@
                      <span class="sr-only">Toggle Dropdown</span>
                    </button>
                    <div class="dropdown-menu" role="menu">
-                     <a class="dropdown-item" href="#"><span class="fa fa-user"></span> My Account</a>
+                     <a class="dropdown-item" href="useraccount.php"><span class="fa fa-user"></span> My Account</a>
                      
                          
                           <div class="dropdown-divider"></div>
@@ -175,7 +183,7 @@
 
                       <li class="nav-header">Maintenance</li>
                      <li class="nav-item dropdown">
-                       <a href="#" class="nav-link nav-trains">
+                       <a href="booktk.php" class="nav-link nav-trains">
                          <i class="nav-icon fas fa-train"></i>
                          <p>
                            + New Booking
@@ -234,7 +242,9 @@
              <div class="info-box-content">
              <span class="info-box-text">Total Trains</span>
              <span class="info-box-number text-right">
-                 5            </span>
+             <?php
+             echo $reg =  $conn->query("SELECT * FROM  trains")->num_rows;
+             ?>  </span>
              </div>
              <!-- /.info-box-content -->
          </div>
